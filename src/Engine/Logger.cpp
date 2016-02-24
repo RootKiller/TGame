@@ -31,7 +31,7 @@ bool Initialize(const char *const logFileName)
 	// logger twice. It is not allowed.
 	assert(!g_logFile);
 
-	const size_t logFileNameLen = strlen(logFileName);
+	const size_t logFileNameLen = logFileName ? strlen(logFileName) : 0;
 	assert(logFileNameLen < 260);
 
 	char finalFileName[260] = { 0 };

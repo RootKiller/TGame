@@ -18,7 +18,7 @@
     <ClCompile Include="..\..\..\src\TGame\EngineMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WindowsMain.cpp">
+    <ClCompile Include="..\..\..\src\TGame\WindowsMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

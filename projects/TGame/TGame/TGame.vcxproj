@@ -142,7 +142,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\TGame\EngineMain.cpp" />
-    <ClCompile Include="WindowsMain.cpp" />
+    <ClCompile Include="..\..\..\src\TGame\WindowsMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

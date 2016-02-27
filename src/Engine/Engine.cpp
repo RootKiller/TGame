@@ -16,6 +16,8 @@
 
 #include "SDL.h"
 
+#include "Graphics.h"
+
 Engine::Engine()
 	: m_exitCode(EXIT_CODE_UNINITIALIZED)
 	, m_isRunning(false)
@@ -30,6 +32,8 @@ Engine::~Engine()
 		SDL_DestroyWindow(m_window);
 		m_window = nullptr;
 	}
+
+	Gfx::Shutdown();
 
 	SDL_Quit();
 
@@ -48,6 +52,11 @@ bool Engine::Initialize(const int argc, const char *const argv[])
 	m_window = SDL_CreateWindow("Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_OPENGL);
 	if (!m_window) {
 		Logger::Error("Unable to create application window. (%s)", SDL_GetError());
+		return false;
+	}
+
+	if (!Gfx::Initialize(Gfx::RenderDevices::RENDER_DEVICE_OpenGL)) {
+		Logger::Error("Unable to initialize graphical subsystem.");
 		return false;
 	}
 
@@ -72,6 +81,12 @@ void Engine::Run(BaseApplication *const app)
 		}
 
 		m_app->Pulse();
+
+		Gfx::BeginFrame();
+
+
+
+		Gfx::EndFrame();
 	}
 
 	m_app = nullptr;

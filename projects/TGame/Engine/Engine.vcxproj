@@ -71,22 +71,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(TGAME_PATH)/lib/$(Configuration)/</OutDir>
     <IntDir>$(TGAME_PATH)/obj/$(ProjectName)/$(Configuration)/</IntDir>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(TGAME_PATH)/src/Engine;</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(TGAME_PATH)/src/Engine;$(TGAME_PATH)/src/Graphics;</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(TGAME_PATH)/lib/$(Configuration)/</OutDir>
     <IntDir>$(TGAME_PATH)/obj/$(ProjectName)/$(Configuration)/</IntDir>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(TGAME_PATH)/src/Engine;</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(TGAME_PATH)/src/Engine;$(TGAME_PATH)/src/Graphics;</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(TGAME_PATH)/lib/$(Configuration)/</OutDir>
     <IntDir>$(TGAME_PATH)/obj/$(ProjectName)/$(Configuration)/</IntDir>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(TGAME_PATH)/src/Engine;</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(TGAME_PATH)/src/Engine;$(TGAME_PATH)/src/Graphics;</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(TGAME_PATH)/lib/$(Configuration)/</OutDir>
     <IntDir>$(TGAME_PATH)/obj/$(ProjectName)/$(Configuration)/</IntDir>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(TGAME_PATH)/src/Engine;</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(TGAME_PATH)/src/Engine;$(TGAME_PATH)/src/Graphics;</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -95,7 +95,7 @@
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <DisableSpecificWarnings>4996;</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>$(TGAME_PATH)/src/Engine;$(TGAME_PATH)/3rdparty/SDL2/includes;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(TGAME_PATH)/src/Graphics;$(TGAME_PATH)/src/Engine;$(TGAME_PATH)/3rdparty/SDL2/includes;</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>OS_WINDOWS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -106,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <DisableSpecificWarnings>4996;</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>$(TGAME_PATH)/src/Engine;$(TGAME_PATH)/3rdparty/SDL2/includes;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(TGAME_PATH)/src/Graphics;$(TGAME_PATH)/src/Engine;$(TGAME_PATH)/3rdparty/SDL2/includes;</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>OS_WINDOWS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -119,7 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <DisableSpecificWarnings>4996;</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>$(TGAME_PATH)/src/Engine;$(TGAME_PATH)/3rdparty/SDL2/includes;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(TGAME_PATH)/src/Graphics;$(TGAME_PATH)/src/Engine;$(TGAME_PATH)/3rdparty/SDL2/includes;</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>OS_WINDOWS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -136,7 +136,7 @@
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <DisableSpecificWarnings>4996;</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>$(TGAME_PATH)/src/Engine;$(TGAME_PATH)/3rdparty/SDL2/includes;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(TGAME_PATH)/src/Graphics;$(TGAME_PATH)/src/Engine;$(TGAME_PATH)/3rdparty/SDL2/includes;</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>OS_WINDOWS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>

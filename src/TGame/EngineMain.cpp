@@ -4,6 +4,8 @@
 
 #include "Engine/Engine.h"
 
+#include "Engine/AutoPtr.h"
+
 int EngineMain(const int argc, const char *const argv[])
 {
 	Engine engine;
@@ -13,8 +15,8 @@ int EngineMain(const int argc, const char *const argv[])
 		return 0;
 	}
 
-	BaseApplication app; // ugly as fck
-	engine.Run(&app);
+	AutoPtr<BaseApplication> app(new BaseApplication());
+	engine.Run(app);
 
 	return engine.GetExitCode();
 }

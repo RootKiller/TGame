@@ -9,9 +9,17 @@
 
 #include <cstdarg>
 
+#include <ctime>
+
 #include <assert.h>
 
 #include "Logger.h"
+
+#ifdef OS_WINDOWS
+#	define EOL "\r\n"
+#else
+#	define EOL "\n"
+#endif
 
 namespace Logger
 {
@@ -25,7 +33,12 @@ static FILE *g_logFile = nullptr;
  */
 static const char *DEFAULT_LOG_FILENAME("engine.log");
 
-bool Initialize(const char *const logFileName)
+/**
+ * Log level.
+ */
+static LogLevel g_logLevel = LOG_LEVEL_Standard;
+
+bool Initialize(const char *const logFileName, const LogLevel level)
 {
 	// In case this assert fails then you are probably trying to initialize the
 	// logger twice. It is not allowed.
@@ -44,6 +57,8 @@ bool Initialize(const char *const logFileName)
 		strcpy(finalFileName, logFileName);
 	}
 
+	g_logLevel = level;
+
 	g_logFile = fopen(finalFileName, "w+");
 	assert(g_logFile);
 
@@ -51,6 +66,17 @@ bool Initialize(const char *const logFileName)
 		printf("[Logger] Unable to open log file. (%s)\n", finalFileName);
 		return false;
 	}
+
+	time_t timer;
+	time(&timer);
+	struct tm *const timeinfo = localtime(&timer);
+
+	static const size_t timeBufferData = 20;
+	char timeData[timeBufferData] = { 0 };
+	strftime(timeData, timeBufferData, "%d-%m-%Y %H:%M:%S", timeinfo);
+
+	Msg("Logger started %s (%s)", timeData, finalFileName);
+
 	return true;
 }
 
@@ -62,11 +88,31 @@ void Shutdown(void)
 	}
 }
 
+/// Print severity into file and system console.
+void PrintSeverity(const char *const severity)
+{
+	fputs(severity, g_logFile);
+	printf(severity);
+}
+
+/// Print end of line into log file and system console.
+void PrintEol(void)
+{
+	fputs(EOL, g_logFile);
+	printf(EOL);
+
+	fflush(g_logFile);
+}
+
 void Msg(const char *const message, ...)
 {
+	if (g_logLevel == LOG_LEVEL_Critical) {
+		return;
+	}
+
 	assert(g_logFile);
 
-	fputs("<MSG> ", g_logFile);
+	PrintSeverity("<MSG> ");
 
 	va_list vaArgs;
 	va_start(vaArgs, message);
@@ -80,14 +126,14 @@ void Msg(const char *const message, ...)
 	vprintf(message, consoleVaArgs);
 	va_end(consoleVaArgs);
 
-	fputc('\n', g_logFile);
+	PrintEol();
 }
 
 void Error(const char *const message, ...)
 {
 	assert(g_logFile);
 
-	fputs("<ERROR> ", g_logFile);
+	PrintSeverity("<MSG> ");
 
 	va_list vaArgs;
 	va_start(vaArgs, message);
@@ -101,8 +147,28 @@ void Error(const char *const message, ...)
 	vprintf(message, consoleVaArgs);
 	va_end(consoleVaArgs);
 
-	fputc('\n', g_logFile);
+	PrintEol();
 }
 
+void Warning(const char *const message, ...)
+{
+	assert(g_logFile);
+
+	PrintSeverity("<WARN> ");
+
+	va_list vaArgs;
+	va_start(vaArgs, message);
+
+	va_list consoleVaArgs;
+	va_copy(consoleVaArgs, vaArgs);
+
+	vfprintf(g_logFile, message, vaArgs);
+	va_end(vaArgs);
+
+	vprintf(message, consoleVaArgs);
+	va_end(consoleVaArgs);
+
+	PrintEol();
+}
 } /* namespace Logger */
 /* eof */

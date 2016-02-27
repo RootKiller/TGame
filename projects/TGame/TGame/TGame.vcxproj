@@ -94,6 +94,9 @@
       <PreprocessorDefinitions>OS_WINDOWS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4996;</DisableSpecificWarnings>
     </ClCompile>
+    <PostBuildEvent>
+      <Command>$(TGAME_PATH)/scripts/post_build.bat $(Configuration) $(Platform_Actual)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -105,6 +108,9 @@
       <PreprocessorDefinitions>OS_WINDOWS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4996;</DisableSpecificWarnings>
     </ClCompile>
+    <PostBuildEvent>
+      <Command>$(TGAME_PATH)/scripts/post_build.bat $(Configuration) $(Platform_Actual)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -122,6 +128,9 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <PostBuildEvent>
+      <Command>$(TGAME_PATH)/scripts/post_build.bat $(Configuration) $(Platform_Actual)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -139,6 +148,9 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <PostBuildEvent>
+      <Command>$(TGAME_PATH)/scripts/post_build.bat $(Configuration) $(Platform_Actual)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\TGame\EngineMain.cpp" />

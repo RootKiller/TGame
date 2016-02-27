@@ -34,6 +34,9 @@ private:
 
 	/// Current application.
 	BaseApplication *m_app;
+
+	/// The application window.
+struct SDL_Window	*m_window;
 public:
 	/// Constructor.
 			Engine			();

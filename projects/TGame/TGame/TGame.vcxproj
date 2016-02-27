@@ -69,20 +69,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(TGAME_PATH)/bin/$(Configuration)/</OutDir>
-    <IntDir>$(TGAME_PATH)/obj/$(ProjectName)/$(Configuration)/</IntDir>
+    <OutDir>$(TGAME_PATH)/bin/$(Configuration)/$(Platform_Actual)/</OutDir>
+    <IntDir>$(TGAME_PATH)/obj/$(ProjectName)/$(Configuration)/$(Platform_Actual)/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(TGAME_PATH)/bin/$(Configuration)/</OutDir>
-    <IntDir>$(TGAME_PATH)/obj/$(ProjectName)/$(Configuration)/</IntDir>
+    <OutDir>$(TGAME_PATH)/bin/$(Configuration)/$(Platform_Actual)/</OutDir>
+    <IntDir>$(TGAME_PATH)/obj/$(ProjectName)/$(Configuration)/$(Platform_Actual)/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(TGAME_PATH)/bin/$(Configuration)/</OutDir>
-    <IntDir>$(TGAME_PATH)/obj/$(ProjectName)/$(Configuration)/</IntDir>
+    <OutDir>$(TGAME_PATH)/bin/$(Configuration)/$(Platform_Actual)/</OutDir>
+    <IntDir>$(TGAME_PATH)/obj/$(ProjectName)/$(Configuration)/$(Platform_Actual)/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(TGAME_PATH)/bin/$(Configuration)/</OutDir>
-    <IntDir>$(TGAME_PATH)/obj/$(ProjectName)/$(Configuration)/</IntDir>
+    <OutDir>$(TGAME_PATH)/bin/$(Configuration)/$(Platform_Actual)/</OutDir>
+    <IntDir>$(TGAME_PATH)/obj/$(ProjectName)/$(Configuration)/$(Platform_Actual)/</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -94,6 +94,10 @@
       <PreprocessorDefinitions>OS_WINDOWS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4996;</DisableSpecificWarnings>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(TGAME_PATH)/3rdparty/SDL2/lib/$(Configuration)/$(Platform_Actual)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
     <PostBuildEvent>
       <Command>$(TGAME_PATH)/scripts/post_build.bat $(Configuration) $(Platform_Actual)</Command>
     </PostBuildEvent>
@@ -108,6 +112,10 @@
       <PreprocessorDefinitions>OS_WINDOWS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4996;</DisableSpecificWarnings>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(TGAME_PATH)/3rdparty/SDL2/lib/$(Configuration)/$(Platform_Actual)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
     <PostBuildEvent>
       <Command>$(TGAME_PATH)/scripts/post_build.bat $(Configuration) $(Platform_Actual)</Command>
     </PostBuildEvent>
@@ -127,6 +135,8 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(TGAME_PATH)/3rdparty/SDL2/lib/$(Configuration)/$(Platform_Actual)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>$(TGAME_PATH)/scripts/post_build.bat $(Configuration) $(Platform_Actual)</Command>
@@ -147,6 +157,8 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(TGAME_PATH)/3rdparty/SDL2/lib/$(Configuration)/$(Platform_Actual)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>$(TGAME_PATH)/scripts/post_build.bat $(Configuration) $(Platform_Actual)</Command>

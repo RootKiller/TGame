@@ -137,6 +137,7 @@
     <ClInclude Include="..\..\..\src\Engine\CommandLine.h" />
     <ClInclude Include="..\..\..\src\Engine\Engine.h" />
     <ClInclude Include="..\..\..\src\Engine\Logger.h" />
+    <ClInclude Include="..\..\..\src\Engine\TypeTraits.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\Engine\App\BaseApplication.cpp" />

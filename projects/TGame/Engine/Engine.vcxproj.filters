@@ -19,6 +19,9 @@
     <Filter Include="Source Files\App">
       <UniqueIdentifier>{2806e5d9-0f40-4808-92e2-a1b4cbeb9a90}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Memory">
+      <UniqueIdentifier>{4c7a59de-028e-4e7b-afac-9cb329b340b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\Engine\Engine.h">
@@ -35,6 +38,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\Engine\TypeTraits.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\Engine\Memory\MemFunctions.h">
+      <Filter>Header Files\Memory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

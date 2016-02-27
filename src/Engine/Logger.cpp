@@ -98,7 +98,10 @@ void PrintSeverity(const char *const severity)
 /// Print end of line into log file and system console.
 void PrintEol(void)
 {
-	fputs(EOL, g_logFile);
+	// NOTE: Using \r\n in fputs results in one empty line between log entries.
+	// TODO: Please investigate why and correct this code later.
+	fputs("\n", g_logFile);
+
 	printf(EOL);
 
 	fflush(g_logFile);

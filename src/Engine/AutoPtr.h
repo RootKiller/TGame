@@ -50,8 +50,6 @@ explicit	AutoPtr		(OBJECT_TYPE *const object)
 		if (m_object) {
 			Memory::DeleteCompleteObject(m_object);
 			m_object = nullptr;
-
-			assert(m_object);
 		}
 	}
 

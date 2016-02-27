@@ -11,42 +11,65 @@
 #include <assert.h>
 #include <cstdio>
 
+#include <string.h>
+
 namespace CmdLine
 {
 
-struct ParameterData
-{
-	const char *name;
-	const char *value;
-};
+const size_t INVALID_PARAM_INDEX(-1);
 
-static ParameterData *g_parameters = nullptr;
-static size_t g_parametersCount = 0;
+static const char *const *argumentsVector = nullptr;
+static size_t argumentsCount = 0;
 
-void Parse(const int argc, const char *const argv[])
+void Init(const int argc, const char *const *const argv)
 {
 	assert(argc > 0);
 
-	// Cases:
-	// -name "value" -name2 "value2"	OK
-	// -name "value -name2" "value"		NOT OK
-	// -name 1 -name2 "value" -name3 45 OK
-	// -name							OK
-	// -name "value						NOT OK
+	argumentsCount = static_cast<size_t>(argc);
+	argumentsVector = argv;
+}
 
-	for (int i = 0; i < argc; ++i) {
-		const char *const currentParam = argv[i];
+size_t GetParamIndex(const char *const paramName)
+{
+	assert(paramName);
+	const size_t paramLen = strlen(paramName);
+	if (!paramLen) {
+		return INVALID_PARAM_INDEX;
 	}
+
+	for (size_t i = 1; i < argumentsCount; ++i) {
+		const char *const arg = argumentsVector[i];
+		if (strlen(arg) < 2) {
+			continue;
+		}
+
+		if (arg[0] != '-') {
+			continue;
+		}
+
+		if (! strcmp(arg + 1, paramName)) {
+			return i;
+		}
+	}
+	return INVALID_PARAM_INDEX;
 }
 
 bool IsParamSet(const char *const paramName)
 {
-	return false;
+	return GetParamIndex(paramName) != INVALID_PARAM_INDEX;
 }
 
 const char *GetParamValue(const char *const paramName)
 {
-	return nullptr;
+	const size_t parameterIndex = GetParamIndex(paramName);
+	if (parameterIndex == INVALID_PARAM_INDEX) {
+		return nullptr;
+	}
+
+	if (parameterIndex == (argumentsCount - 1)) {
+		return nullptr;
+	}
+	return argumentsVector[parameterIndex + 1];
 }
 
 } /* namespace CmdLine */

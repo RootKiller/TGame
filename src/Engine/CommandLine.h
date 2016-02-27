@@ -10,12 +10,12 @@ namespace CmdLine
 {
 
 /**
- * Parse the command line.
+ * Initialize the command line.
  *
  * @param[in] argc The count of the parameters.
  * @param[in] argv The parameters data.
  */
-void Parse(const int argc, const char *const argv[]);
+void Init(const int argc, const char *const argv[]);
 
 /**
  * Check if the parameter is set.

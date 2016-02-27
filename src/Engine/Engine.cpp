@@ -28,7 +28,7 @@ Engine::~Engine()
 
 bool Engine::Initialize(const int argc, const char *const argv[])
 {
-	CmdLine::Parse(argc, argv);
+	CmdLine::Init(argc, argv);
 
 	const char *const logFileName(CmdLine::IsParamSet("log") ? CmdLine::GetParamValue("log") : "engine.log");
 	Logger::Initialize(logFileName);

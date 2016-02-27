@@ -31,7 +31,7 @@ bool Engine::Initialize(const int argc, const char *const argv[])
 	CmdLine::Init(argc, argv);
 
 	const char *const logFileName(CmdLine::IsParamSet("log") ? CmdLine::GetParamValue("log") : "engine.log");
-	Logger::Initialize(logFileName);
+	Logger::Initialize(logFileName, Logger::LOG_LEVEL_Standard);
 
 	m_isRunning = true;
 	m_exitCode = EXIT_CODE_OK;

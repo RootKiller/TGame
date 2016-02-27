@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\Engine\App\BaseApplication.h" />
+    <ClInclude Include="..\..\..\src\Engine\AutoPtr.h" />
     <ClInclude Include="..\..\..\src\Engine\CommandLine.h" />
     <ClInclude Include="..\..\..\src\Engine\Engine.h" />
     <ClInclude Include="..\..\..\src\Engine\Logger.h" />
